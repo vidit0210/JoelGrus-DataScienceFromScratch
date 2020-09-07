@@ -1,7 +1,6 @@
 from typing import Callable
-from typing import Tuple
+from typing import Tuple, List
 Matrix = List[List[float]]
-
 # A has 2 rowa and 3 coloumns
 A = [[1, 2, 3], [4, 5, 6]]
 
