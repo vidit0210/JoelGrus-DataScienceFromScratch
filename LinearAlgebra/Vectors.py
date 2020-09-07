@@ -1,3 +1,4 @@
+import math
 from typing import List
 
 Vector = List[float]
@@ -50,7 +51,7 @@ def vector_mean(vectors: List[Vector]) -> Vector:
     return scalar_multiply(1 / n, vector_sum(vectors))
 
 
-assert vector_mean([[1, 2], [3, 4], [3, 6]]) == [3, 4]
+assert vector_mean([[1, 2], [3, 4], [5, 6]]) == [3, 4]
 
 
 def dot(v: Vector, w: Vector) -> Vector:
@@ -60,3 +61,23 @@ def dot(v: Vector, w: Vector) -> Vector:
 
 
 assert dot([1, 2, 3], [4, 5, 6]) == 32
+
+
+def sum_of_squares(v: Vector) -> float:
+    """Return v_1 * v1 + ..... + v_n * _vn"""
+    return dot(v, v)
+
+
+assert sum_of_squares([1, 2, 3]) == 14
+
+
+def magnitude(v: Vector) -> float:
+    """Returns the magnitude of v"""
+    return math.sqrt(sum_of_squares(v))
+
+
+assert magnitude([3, 4]) == 5
+
+
+def distance(v: Vector, w: Vector) -> float:
+    return magnitude(subtract(v, w))
