@@ -42,3 +42,21 @@ def scalar_multiply(c: float, v: Vector) -> Vector:
 
 
 assert scalar_multiply(2, [1, 2, 3]) == [2, 4, 6]
+
+
+def vector_mean(vectors: List[Vector]) -> Vector:
+    """computes Element wise Average"""
+    n = len(vectors)
+    return scalar_multiply(1 / n, vector_sum(vectors))
+
+
+assert vector_mean([[1, 2], [3, 4], [3, 6]]) == [3, 4]
+
+
+def dot(v: Vector, w: Vector) -> Vector:
+    """Computes v_1 * w_1 + ... + v_n * w_n"""
+    assert len(v) == len(w), "vectors must be same length"
+    return sum(v_i * w_i for v_i, w_i in zip(v, w))
+
+
+assert dot([1, 2, 3], [4, 5, 6]) == 32
