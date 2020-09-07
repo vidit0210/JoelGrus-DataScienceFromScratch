@@ -22,4 +22,16 @@ def subtract(v: Vector, w: Vector) -> Vector:
 
 assert subtract([5, 7, 9], [4, 5, 6]) == [1, 2, 3]
 
-def
+
+def vector_sum(vectors: List[Vector]) -> Vector:
+    """Sum of all corresponding elements"""
+    assert vectors, "No Vectors provided"
+    # Check all the vectors provided are of same size
+    num_elements = len(vectors[0])
+    assert all(
+        len(v) == num_elements for v in vectors), "Different sizes in the vector"
+    return [sum(vector[i] for vector in vectors) for i in range(num_elements)]
+
+
+assert vector_sum([[1, 2], [3, 4], [5, 6], [7, 8]]) == [16, 20]
+print("Done")
