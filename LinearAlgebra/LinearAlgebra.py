@@ -132,3 +132,4 @@ assert identity_matrix(5) == [[1, 0, 0, 0, 0],
                               [0, 0, 1, 0, 0],
                               [0, 0, 0, 1, 0],
                               [0, 0, 0, 0, 1]]
+print(identity_matrix(5))
