@@ -30,3 +30,17 @@ for _ in range(10000):
 
 print("P(both | older) :", both_girls/older_girls)
 print("P(both | either) : ", both_girls/either_girl)
+
+
+def uniform_pdf(x: float) -> float:
+    return 1 if 0 <= x < 1 else 0
+
+
+def uniform_cdf(x: float) -> float:
+    """Returns the probability that a uniform random variable is <=x"""
+    if x < 0:
+        return 0
+    elif x < 1:
+        return x
+    else:
+        return 1
