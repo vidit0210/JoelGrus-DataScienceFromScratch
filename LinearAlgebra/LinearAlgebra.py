@@ -10,7 +10,7 @@ grades = [95, 80, 75, 62]
 
 def add(v: Vector, w: Vector) -> Vector:
     """Adds corresponding element"""
-    assert len(v) == len(w)
+    assert len(v) == len(w), "Length of vectors are not same"
     return [v_i + w_i for v_i, w_i in zip(v, w)]
 
 
@@ -19,11 +19,13 @@ assert add([1, 2, 3], [4, 5, 6]) == [5, 7, 9]
 
 def subtract(v: Vector, w: Vector) -> Vector:
     """Subtracts corresponding elements"""
-    assert len(v) == len(w)
+    assert len(v) == len(w), "Leangth of Vectors are not same"
     return [v_i - w_i for v_i, w_i in zip(v, w)]
 
 
 assert subtract([5, 7, 9], [4, 5, 6]) == [1, 2, 3]
+
+0
 
 
 def vector_sum(vectors: List[Vector]) -> Vector:
