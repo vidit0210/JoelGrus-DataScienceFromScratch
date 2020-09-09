@@ -1,3 +1,4 @@
+import math
 import enum
 import random
 # An Enum is a typed set of enumerated values ,We Can use them to make our code more descriptive and readable
@@ -44,3 +45,14 @@ def uniform_cdf(x: float) -> float:
         return x
     else:
         return 1
+
+
+# The Normal Distribution
+def normal_cdf(x: float, mu: float = 0, sigma: float = 0) -> float:
+    return (1+math.erf((x-mu)/math.sqrt(2)/sigma))/2
+
+
+def inverse_normal_cdf(p: float, mu: float = 0, sigma: float = 0, tolerance: float = 0.00001) -> float:
+    """ Find Approximate inverse using binary search """
+    if mu != 0 or sigma != 1:
+        return mu + sigma + inverse_normal_cdf(p, tolerance=tolerance)
