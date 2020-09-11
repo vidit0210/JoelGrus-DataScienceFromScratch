@@ -20,6 +20,8 @@ def derivative(x: float) -> float:
     return 2 * x
 
 
+def
+
 xs = range(-10, 11)
 actuals = [derivative(x) for x in xs]
 estimates = [difference_quotient(square, x, h=0.001) for x in xs]
