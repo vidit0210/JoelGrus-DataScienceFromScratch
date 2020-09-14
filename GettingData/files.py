@@ -12,3 +12,7 @@ def get_domain(email_address: str) -> str:
 # Ac ouple of tests
 assert get_domain('joelgrus@gmail.com') == 'gmail.com'
 assert get_domain('joel@m.datasciencester.com') == 'm.datasciencester.com'
+
+with open('email_address.txt', 'r') as f:
+    domain_counts = Counter(get_domain(line.strip())
+                            for line in f if '@' in line)
