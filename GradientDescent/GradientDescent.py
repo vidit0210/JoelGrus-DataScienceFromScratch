@@ -1,3 +1,4 @@
+from typing import TypeVar, List, Iterator
 from LinearAlgebra import vector_mean
 from LinearAlgebra import distance, add, scalar_multiply
 import random
@@ -27,11 +28,11 @@ xs = range(-10, 11)
 actuals = [derivative(x) for x in xs]
 estimates = [difference_quotient(square, x, h=0.001) for x in xs]
 
-plt.title("Actual Derivatives vs estimates")
-plt.plot(xs, actuals, 'rx', label='Actual')
-plt.plot(xs, estimates, 'b+', label="Estimate")
-plt.legend(loc=9)
-plt.show()
+# plt.title("Actual Derivatives vs estimates")
+# plt.plot(xs, actuals, 'rx', label='Actual')
+# plt.plot(xs, estimates, 'b+', label="Estimate")
+# plt.legend(loc=9)
+# plt.show()
 
 
 def partial_difference_quotient(f: Callable[[Vector], float], v: Vector, i: int, h: float) -> float:
@@ -81,7 +82,7 @@ def linear_gradient(x: float, y: float, theta: Vector) -> Vector:
 # Approaching Mean Squared Error
 
 
-theta = [random_uniform(-1, 1), random.uniform(-1, 1)]
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
 learning_rate = 0.001
 
 for epoch in range(5000):
@@ -90,3 +91,35 @@ for epoch in range(5000):
     # Take a step in that direction..
     theta = gradient_step(theta, grad, -learning_rate)
     print(epoch, theta)
+slope, intercept = theta
+assert 19.9 < slope < 20.1, "Slope should be about 20"
+assert 4.9 < intercept < 5.1, "intercept should be about 5"
+
+# Mini Barch Gradient Descent
+T = TypeVar('T')
+
+
+def minibatches(dataset: List[T], batch_size: int, shuffle: bool = True) -> Iterator[List[T]]:
+    """Generates,Batch size  -sized minibatches from the dataset"""
+    # start indexes 0,batch_size,2*Batch_size
+    batch_starts = [start for start in range(0, len(dataset), batch_size)]
+    if shuffle:
+        random.shuffle(batch_starts)
+
+    for start in batch_starts:
+        end = start + batch_size
+        yield dataset[start:end]
+
+# Solving problem with mini Batches
+
+
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+for epocn in range(1000):
+    for batch in minibatches(inputs, batch_size=20):
+        grad = vector_mean([linear_gradient(x, y, theta) for x, y in batch])
+        theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+slope, intercept = theta
+assert 19.9 < slope < 20.1, "Slope should be about 20"
+assert 4.9 < intercept < 5.1, "intercept should be about 5"
