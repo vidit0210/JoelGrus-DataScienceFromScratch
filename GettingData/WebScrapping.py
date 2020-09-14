@@ -11,5 +11,7 @@ first_paragraph = soup.find('p')
 first_paragraph_text = soup.p.text
 print(first_paragraph_text)
 
-first_paragraph_words = soup.find.text.split()
+first_paragraph_words = soup.p.text.split()
 print(first_paragraph_words)
+
+first_paragraph
