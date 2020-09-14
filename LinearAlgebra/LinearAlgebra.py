@@ -25,8 +25,6 @@ def subtract(v: Vector, w: Vector) -> Vector:
 
 assert subtract([5, 7, 9], [4, 5, 6]) == [1, 2, 3]
 
-0
-
 
 def vector_sum(vectors: List[Vector]) -> Vector:
     """Sum of all corresponding elements"""
