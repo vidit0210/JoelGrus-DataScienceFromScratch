@@ -1,3 +1,4 @@
+from LinearAlgebra import vector_mean
 from LinearAlgebra import distance, add, scalar_multiply
 import random
 import matplotlib.pyplot as plt
@@ -64,3 +65,28 @@ for epoch in range(1000):
 
 # V should be close to 0
 assert distance(v, [0, 0, 0]) < 0.001, "Distance Assertion"
+
+# using Gradient Descent to fit the models
+inputs = [(x, 20*x+5) for x in range(-50, 50)]
+
+
+def linear_gradient(x: float, y: float, theta: Vector) -> Vector:
+    slope, intercept = theta
+    predicted = slope * x + intercept
+    error = (predicted - y)
+    squared_error = error ** 2
+    grad = [2 * error * x, 2*error]
+    return grad
+
+# Approaching Mean Squared Error
+
+
+theta = [random_uniform(-1, 1), random.uniform(-1, 1)]
+learning_rate = 0.001
+
+for epoch in range(5000):
+    # compute the ector mran of the gradients
+    grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
+    # Take a step in that direction..
+    theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
