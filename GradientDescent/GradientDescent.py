@@ -114,9 +114,21 @@ def minibatches(dataset: List[T], batch_size: int, shuffle: bool = True) -> Iter
 
 
 theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
-for epocn in range(1000):
+for epoch in range(1000):
     for batch in minibatches(inputs, batch_size=20):
         grad = vector_mean([linear_gradient(x, y, theta) for x, y in batch])
+        theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+slope, intercept = theta
+assert 19.9 < slope < 20.1, "Slope should be about 20"
+assert 4.9 < intercept < 5.1, "intercept should be about 5"
+
+# Stochastic Gradient Descent
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+for epoch in range(100):
+    for x, y in inputs:
+        grad = linear_gradient(x, y, theta)
         theta = gradient_step(theta, grad, -learning_rate)
     print(epoch, theta)
 
