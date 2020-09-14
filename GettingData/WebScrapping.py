@@ -10,3 +10,6 @@ first_paragraph = soup.find('p')
 # print(first_paragraph)
 first_paragraph_text = soup.p.text
 print(first_paragraph_text)
+
+first_paragraph_words = soup.find.text.split()
+print(first_paragraph_words)
