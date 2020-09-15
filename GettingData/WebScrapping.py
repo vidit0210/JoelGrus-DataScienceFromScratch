@@ -30,4 +30,6 @@ print(important_paragraphs)
 print(important_paragraphs2)
 print(important_paragraphs3)
 
-# If you
+# If you want to find span in every element
+span_inside_divs = [span for div in soup('div') for span in div('span')]
+print(span_inside_divs)
