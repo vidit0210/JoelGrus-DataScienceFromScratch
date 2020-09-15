@@ -23,3 +23,6 @@ assert not re.match(regex, "http://joel.house.com")
 assert not re.match(regex, "https://joel.house.gov/biography")
 
 good_urls = [url for url in all_urls if re.match(regex, url)]
+print(len(good_urls))
+good_urls = list(set(good_urls))
+print(len(good_urls))
