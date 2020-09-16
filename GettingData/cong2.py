@@ -15,4 +15,4 @@ print(f"{house_url}:{pr_links}")
 press_releases[house_url] = pr_links
 
 
-def paragraph_mentions(text: str, keyword: str)
+def paragraph_mentions(text: str, keyword: str):
