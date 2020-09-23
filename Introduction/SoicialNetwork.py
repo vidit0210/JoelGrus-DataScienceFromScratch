@@ -36,3 +36,9 @@ assert number_of_friends(users[0]) == 2
 
 total_connections = sum(number_of_friends(user) for user in users)
 assert total_connections == 24
+
+num_users = len(users)
+avg_connections = total_connections / num_users
+
+assert num_users == 10, "Length of users should be 10"
+assert avg_connections == 2.4, "Average Connection length should be 2.4"
