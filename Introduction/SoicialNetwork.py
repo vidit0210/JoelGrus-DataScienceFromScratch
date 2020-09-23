@@ -51,3 +51,10 @@ print(num_friends_by_id)
 
 assert num_friends_by_id[0][1] == 3
 assert num_friends_by_id[-1] == (9, 1)
+
+
+def foaf_ids_bad(user):
+    """ foaf is short form for "friend of a friend" """
+    return [foaf_id
+            for friend_id in friendships[user["id"]]
+            for foaf_id in friendships[foaf_id]]
