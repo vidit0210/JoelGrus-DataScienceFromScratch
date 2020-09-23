@@ -164,3 +164,8 @@ def tenure_bucket(tenure):
         return "Between two and four"
     else:
         return "Greater than 5"
+
+
+salary_by_tenure_bucket = defaultdict(list)
+for salary, tenure in salaries_and_tenures:
+    bukcet = tenure
