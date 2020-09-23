@@ -1,3 +1,4 @@
+from collections import Counter
 users = [
     {"id": 0, "name": "Hero"},
     {"id": 1, "name": "Dunn"},
@@ -60,14 +61,28 @@ def foaf_ids_bad(user):
             for foaf_id in friendships[friend_id]]
 
 
-print(foaf_ids_bad(users[0]))
+# print(foaf_ids_bad(users[0]))
 
 assert foaf_ids_bad(users[0]) == [0, 2, 3, 0, 1, 3]
 
-print(friendships[0])
-print(friendships[1])
-print(friendships[2])
+# print(friendships[0])
+# print(friendships[1])
+# print(friendships[2])
 
 assert friendships[0] == [1, 2]
 assert friendships[1] == [0, 2, 3]
-assert friendships[3] == [0, 1, 3]
+assert friendships[2] == [0, 1, 3]
+
+
+def friends_of_friends(user):
+    user_id = user["id"]
+    return Counter(
+        foaf_id
+        for friend_id in friendships[user_id]  # For each of my friend
+        for foaf_id in friendships[friend_id]  # Find their friends
+        if foaf_id != user_id  # who arent me
+        and foaf_id not in friendships[user_id]  # and aren't my friends
+    )
+
+
+print(friends_of_friends(users[3]))
