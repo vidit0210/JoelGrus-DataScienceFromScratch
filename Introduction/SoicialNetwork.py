@@ -33,3 +33,6 @@ def number_of_friends(user):
 
 
 assert number_of_friends(users[0]) == 2
+
+total_connections = sum(number_of_friends(user) for user in users)
+assert total_connections == 24
