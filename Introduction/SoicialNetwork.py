@@ -42,3 +42,7 @@ avg_connections = total_connections / num_users
 
 assert num_users == 10, "Length of users should be 10"
 assert avg_connections == 2.4, "Average Connection length should be 2.4"
+
+# create a list of use_id , number_of_friends
+num_friends_by_id = [(user["id"], number_of_friends(user)) for user in users]
+print(num_friends_by_id)
