@@ -113,11 +113,11 @@ def data_scientist_who_like(target_interest):
 
 
 user_id_by_interest = defaultdict(list)
-print(user_id_by_interest)
+# print(user_id_by_interest)
 
 for user_id, interest in interests:
     user_id_by_interest[interest].append(user_id)
-print(user_id_by_interest)
+# print(user_id_by_interest)
 
 
 def most_common_interest_with(user):
@@ -126,3 +126,17 @@ def most_common_interest_with(user):
                    for interested_user_id in user_id_by_interest[interest]
                    if interested_user_id != user
                    )
+
+
+salaries_and_tenures = [(83000, 8.7), (88000, 8.1),
+                        (48000, 0.7), (76000, 6),
+                        (69000, 6.5), (76000, 7.5),
+                        (60000, 2.5), (83000, 10),
+                        (48000, 1.9), (63000, 4.2)]
+
+salaries_by_tenure = defaultdict(list)
+
+for salary, tenure in salaries_and_tenures:
+    salaries_by_tenure[tenure].append(salary)
+
+print(salaries_by_tenure)
