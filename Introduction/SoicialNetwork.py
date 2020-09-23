@@ -57,4 +57,17 @@ def foaf_ids_bad(user):
     """ foaf is short form for "friend of a friend" """
     return [foaf_id
             for friend_id in friendships[user["id"]]
-            for foaf_id in friendships[foaf_id]]
+            for foaf_id in friendships[friend_id]]
+
+
+print(foaf_ids_bad(users[0]))
+
+assert foaf_ids_bad(users[0]) == [0, 2, 3, 0, 1, 3]
+
+print(friendships[0])
+print(friendships[1])
+print(friendships[2])
+
+assert friendships[0] == [1, 2]
+assert friendships[1] == [0, 2, 3]
+assert friendships[3] == [0, 1, 3]
