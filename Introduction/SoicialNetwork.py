@@ -16,13 +16,11 @@ friendship_pairs = [(0, 1), (0, 2), (1, 2), (1, 3), (2, 3), (3, 4),
 
 # initialize the dict iwth an empty list for each user id
 friendships = {user["id"]: [] for user in users}
-print(friendships)
 
 # And Loop over the fiendship pair to populate it
 for i, j in friendship_pairs:
     friendships[i].append(j)
     friendships[j].append(i)
-print(friendships)
 
 
 def number_of_friends(user):
@@ -45,4 +43,8 @@ assert avg_connections == 2.4, "Average Connection length should be 2.4"
 
 # create a list of use_id , number_of_friends
 num_friends_by_id = [(user["id"], number_of_friends(user)) for user in users]
+print(num_friends_by_id)
+
+num_friends_by_id.sort(
+    key=lambda id_and_friends: id_and_friends[1], reverse=True)
 print(num_friends_by_id)
