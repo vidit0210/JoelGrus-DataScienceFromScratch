@@ -139,4 +139,28 @@ salaries_by_tenure = defaultdict(list)
 for salary, tenure in salaries_and_tenures:
     salaries_by_tenure[tenure].append(salary)
 
-print(salaries_by_tenure)
+average_salary_by_tenure = {
+    tenure: sum(salaries) / len(salaries)
+    for tenure, salaries in salaries_by_tenure.items()
+}
+assert average_salary_by_tenure == {
+    0.7: 48000.0,
+    1.9: 48000.0,
+    2.5: 60000.0,
+    4.2: 63000.0,
+    6: 76000.0,
+    6.5: 69000.0,
+    7.5: 76000.0,
+    8.1: 88000.0,
+    8.7: 83000.0,
+    10: 83000.0
+}
+
+
+def tenure_bucket(tenure):
+    if tenure < 2:
+        return "Less than 2"
+    elif tenure < 5:
+        return "Between two and four"
+    else:
+        return "Greater than 5"
