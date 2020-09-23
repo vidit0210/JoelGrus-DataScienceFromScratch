@@ -48,3 +48,6 @@ print(num_friends_by_id)
 num_friends_by_id.sort(
     key=lambda id_and_friends: id_and_friends[1], reverse=True)
 print(num_friends_by_id)
+
+assert num_friends_by_id[0][1] == 3
+assert num_friends_by_id[-1] == (9, 1)
