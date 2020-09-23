@@ -1,3 +1,4 @@
+from collections import defaultdict
 from collections import Counter
 users = [
     {"id": 0, "name": "Hero"},
@@ -109,3 +110,19 @@ interests = [
 def data_scientist_who_like(target_interest):
     """Find the ids of all users who like the target Interest"""
     return [user_id for user_id, user_interest in interests if user_interest == target_interest]
+
+
+user_id_by_interest = defaultdict(list)
+print(user_id_by_interest)
+
+for user_id, interest in interests:
+    user_id_by_interest[interest].append(user_id)
+print(user_id_by_interest)
+
+
+def most_common_interest_with(user):
+    return Counter(interested_user_id
+                   for interest in interests_by_user_id[user["id"]]
+                   for interested_user_id in user_id_by_interest[interest]
+                   if interested_user_id != user
+                   )
