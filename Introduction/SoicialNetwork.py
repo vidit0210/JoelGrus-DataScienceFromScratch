@@ -43,3 +43,7 @@ avg_connections = total_connections/num_users
 
 assert num_users == 10
 assert avg_connections == 2.4
+
+# Create a list (user_id,number_of_friends)
+num_friends_by_id = [(user["id"], number_of_friends(user)) for user in users]
+print(num_friends_by_id)
