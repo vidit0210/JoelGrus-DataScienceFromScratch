@@ -172,3 +172,9 @@ for salary, tenure in salaries_and_tenures:
     salary_by_tenure_bucket[bucket].append(salary)
 
 print(salary_by_tenure_bucket)
+
+# keys are tenure buckets,values are aerage salaries for that bucket
+average_salary_by_bucket = {
+    tenure_bucket: sum(salaries) / len(salaries)
+    for tenure_bucket, salaries in salary_by_tenure_bucket.items()
+}
