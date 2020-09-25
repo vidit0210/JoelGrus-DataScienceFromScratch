@@ -107,9 +107,6 @@ interests = [
 ]
 
 
-class code
-
-
 def data_scientist_who_like(target_interest):
     """Find the ids of all users who like the target Interest"""
     return [user_id for user_id, user_interest in interests if user_interest == target_interest]
@@ -171,7 +168,7 @@ def tenure_bucket(tenure):
 
 salary_by_tenure_bucket = defaultdict(list)
 for salary, tenure in salaries_and_tenures:
-    bukcet = tenure
+    bucket = tenure_bucket(tenure)
+    salary_by_tenure_bucket[bucket].append(salary)
 
-
-class Code
+print(salary_by_tenure_bucket)
