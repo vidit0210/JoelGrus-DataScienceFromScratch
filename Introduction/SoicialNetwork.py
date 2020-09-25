@@ -34,6 +34,12 @@ def number_of_friends(user):
 
 # print(number_of_friends(users[0]))
 total_connections = sum(number_of_friends(user) for user in users)
-print(total_connections)
+# print(total_connections)
 
 assert total_connections == 24
+
+num_users = len(users)
+avg_connections = total_connections/num_users
+
+assert num_users == 10
+assert avg_connections == 2.4
