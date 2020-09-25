@@ -47,3 +47,13 @@ assert avg_connections == 2.4
 # Create a list (user_id,number_of_friends)
 num_friends_by_id = [(user["id"], number_of_friends(user)) for user in users]
 print(num_friends_by_id)
+
+num_friends_by_id.sort(
+    key=lambda id_and_friends: id_and_friends[1], reverse=True)
+# Each pair is (user_id, num_friends):
+# [(1, 3), (2, 3), (3, 3), (5, 3), (8, 3),
+#  (0, 2), (4, 2), (6, 2), (7, 2), (9, 1)]
+
+
+assert num_friends_by_id[0][1] == 3     # several people have 3 friends
+assert num_friends_by_id[-1] == (9, 1)  # user 9 has only 1 friend
