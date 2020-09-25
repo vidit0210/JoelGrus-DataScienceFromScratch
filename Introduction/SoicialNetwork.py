@@ -57,3 +57,13 @@ num_friends_by_id.sort(
 
 assert num_friends_by_id[0][1] == 3     # several people have 3 friends
 assert num_friends_by_id[-1] == (9, 1)  # user 9 has only 1 friend
+
+
+def foaf_ids_bad(user):
+    """ Foaf is hsort form for "friends of a friend" """
+    return [foaf_id
+            for friend_id in friendships[user["id"]]
+            for foaf_id in friendships[friend_id]]
+
+
+assert foaf_ids_bad(users[0]) == [0, 2, 3, 0, 1, 3]
