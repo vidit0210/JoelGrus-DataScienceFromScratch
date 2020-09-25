@@ -214,3 +214,9 @@ interests = [
     (8, "Big Data"), (8, "artificial intelligence"), (9, "Hadoop"),
     (9, "Java"), (9, "MapReduce"), (9, "Big Data")
 ]
+
+words_and_counts = Counter(word
+                           for user, interest in interests
+                           for word in interest.lower().split())
+
+print(words_and_counts)
