@@ -187,3 +187,12 @@ print(average_salary_by_bucket)
 #     'less than two': 48000.0,
 #     'more than five': 79166.66666666667
 # }
+
+def predict_paid_or_unpaid(year_experience):
+    """Pediciting Years paid or unpaid years of expereince"""
+    if year_experience < 3.0:
+        return "paid"
+    elif year_experience < 8.5:
+        return "unpaid"
+    else:
+        return "paid"
