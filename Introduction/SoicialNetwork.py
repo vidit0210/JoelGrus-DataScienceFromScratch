@@ -22,9 +22,18 @@ for i, j in friendship_pairs:
     friendships[i].append(j)
     friendships[j].append(i)
 
+# print(friendships)
+
 
 def number_of_friends(user):
     """How many friends does user have?"""
     user_id = user["id"]
     friends_id = friendships[user_id]
     return len(friends_id)
+
+
+# print(number_of_friends(users[0]))
+total_connections = sum(number_of_friends(user) for user in users)
+print(total_connections)
+
+assert total_connections == 24
