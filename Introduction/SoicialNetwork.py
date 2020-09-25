@@ -178,3 +178,12 @@ average_salary_by_bucket = {
     tenure_bucket: sum(salaries) / len(salaries)
     for tenure_bucket, salaries in salary_by_tenure_bucket.items()
 }
+
+print(average_salary_by_bucket)
+
+
+# assert average_salary_by_bucket == {
+#     'between two and five': 61500.0,
+#     'less than two': 48000.0,
+#     'more than five': 79166.66666666667
+# }
