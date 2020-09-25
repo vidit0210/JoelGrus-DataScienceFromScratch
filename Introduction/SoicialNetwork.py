@@ -172,3 +172,6 @@ def tenure_bucket(tenure):
 salary_by_tenure_bucket = defaultdict(list)
 for salary, tenure in salaries_and_tenures:
     bukcet = tenure
+
+
+class Code
