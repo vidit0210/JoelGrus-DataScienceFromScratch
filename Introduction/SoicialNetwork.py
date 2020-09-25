@@ -60,10 +60,24 @@ assert num_friends_by_id[-1] == (9, 1)  # user 9 has only 1 friend
 
 
 def foaf_ids_bad(user):
-    """ Foaf is hsort form for "friends of a friend" """
+    """ Foaf is short form for "friends of a friend" """
     return [foaf_id
             for friend_id in friendships[user["id"]]
             for foaf_id in friendships[friend_id]]
 
 
 assert foaf_ids_bad(users[0]) == [0, 2, 3, 0, 1, 3]
+
+
+def friends_of_friends(user):
+    user_id = user["id"]
+    return Counter(
+        foaf_id
+        for friend_id in friendships[user_id]
+        for foaf_id in friendships[friend_id]
+        if foaf_id != user_id and foaf_id not in friendships[user_id]
+    )
+
+
+print(friends_of_friends(users[3]))
+assert friends_of_friends(users[3]) == Counter({0: 2, 5: 1})
