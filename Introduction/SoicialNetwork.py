@@ -107,6 +107,9 @@ interests = [
 ]
 
 
+class code
+
+
 def data_scientist_who_like(target_interest):
     """Find the ids of all users who like the target Interest"""
     return [user_id for user_id, user_interest in interests if user_interest == target_interest]
